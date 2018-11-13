@@ -1,0 +1,120 @@
+body{
+    margin: 0;
+    background-color: #E4E4E4;
+    height: 100vh;
+    font-family: NanumSquareRound;
+}
+
+#backBoard{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 119px;
+
+    width: 862px;
+    height: 419px;
+    z-index: 1;
+    background-color:#fff;
+}
+
+#header{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25px;
+}
+
+#headerStr{
+    margin: 0;
+    padding-left: 25px; 
+    font-size: 35px;
+    color: #707070;
+}
+
+#headerLine{
+    border: 0;
+    height: 5px;
+    width: 825px;
+    background: #707070;
+}
+
+input:not(#signUpbtn){
+    width: 395.05px;
+    height: 62px;
+    background-color: #EBEBEB;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 28px;
+}
+
+#id{
+    margin: 0;
+    position: relative;
+    top: 53.2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+#pw{
+    margin: 0;
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+#signUpbtn{
+    position: relative;
+    top: 190px;
+    left: -40px;
+    width: 157px;
+    height: 50px;
+    border: 0;
+    border-radius: 9px;
+    background-color: #34495E;
+    color: #fff;
+    font-size: 28px;
+    z-index: 0;
+    box-shadow: 0px 3px #ACACAC;
+}
+
+#signUpbtn:hover{
+    border: 1px solid #34495E;
+    background-color: #fff;
+    color: #34495E;
+}
+
+#signUpbtn:active{
+    box-shadow: 0px 1px #848484;
+    transform: translateY(2px);
+    border: 1px solid #34495E;
+    background-color: #ffffff;
+    color: #34495E;
+}
+
+#logInbtn{
+    position: absolute;
+    bottom: 50px;
+    right: 150px;
+    width: 157px;
+    height: 50px;
+    border-radius: 9px;
+    background-color: #fff;
+    color: #34495E;
+    font-size: 28px;
+    box-shadow: 0px 3px #ACACAC;
+}
+
+#logInbtn:hover{
+    background-color: #34495E;
+    color: #fff;
+}
+
+#logInbtn:active{
+    box-shadow: 0px 1px #848484;
+    transform: translateY(2px);
+    background-color: #34495E;
+    color: #ffffff;
+}

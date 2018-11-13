@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SignUp</title>
+    <link rel="stylesheet" type="text/css" href="./singUp.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <script type="text/javascript" src="./signUp.js"></script>
+</head>
+<body>
+    <div id="backBoard">
+        <div id = "header">
+            <p id="headerStr">회원가입하기</p>
+            <hr id= "headerLine">
+        </div>    
+
+        <form method="POST">
+            <label for="id">
+                <input type="text" id="id" placeholder="ID">
+            </label><br>
+            <label for="pw">
+                <input type="password" id="pw" placeholder="PassWord">
+            <button id="signUpbtn" onclick="signup()">회원가입</button>
+        </form>
+
+        <button id="logInbtn" onclick="location.href='../logIn/logIn.html'">로그인</button>
+    </div>
+</body>
+</html>
