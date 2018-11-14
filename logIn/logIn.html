@@ -16,16 +16,13 @@
             <hr id= "headerLine">
         </div>    
 
-        <form action="dms.istruly.sexy:792/" method="POST">
-            <label for="id">
-                <input type="text" id="id" placeholder="ID">
-            </label><br>
-            <label for="pw">
-                <input type="password" id="pw" placeholder="PassWord">
-            </label>
-            <input type="submit" value="로그인" id="logInbtn">
-        </form>
-
+        <label for="id">
+           <input type="text" id="id" placeholder="ID">
+        </label><br>
+        <label for="pw">
+            <input type="password" id="pw" placeholder="PassWord">
+        </label>
+        <button id="logInbtn" onclick="logIn()">로그인</button>
         <button id="signUpbtn" onclick="location.href='../signUp/signUp.html'">회원가입</button>
     </div>
 </body>
