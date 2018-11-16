@@ -1,7 +1,7 @@
 function logIn(){
     const id = document.getElementById("id").value;
     const password = document.getElementById("pw").value;
-    const singupbtn = document.getElementById("signupbtn");
+    //sconst singupbtn = document.getElementById("signupbtn");
 
     console.log(id , pw);
 
@@ -20,7 +20,13 @@ function logIn(){
         alert("로그인이 성공하엿습니다");
     }
     else if(xhr.status === 401){
-        alert("로그인에 실피하였습니다");
+        alert("로그인에 실패하였습니다");
     }
 
+    let JWT = JSON.parse(xhr.response);
+    console.log(JWT);
+    let storage = localStorage;
+    storage.setItem( 'JWT', JWT.accessTocken);
+
+    console.log(storage);
 }
