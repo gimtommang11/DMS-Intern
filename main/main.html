@@ -8,8 +8,10 @@
     <link rel="stylesheet" type="text/css" href="./main.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <script type="text/javascript" src="./main.js"></script>
+
 </head>
 <body>
+    <button onclick="getPosts()">asdf</button>
     <div id="link">
         <a href="../logIn/./logIn.html" id="login">로그인</a><br>
         <a href="../signUp/./signUp.html" id="signup">회원가입 </a>
@@ -21,18 +23,22 @@
     
     <div id="backBoard">
         <button id="writingbtn" onclick="location.href='../writing/writing.html'">글쓰기</button>
-        <table>
+        <table id="table">
             <figcaption>
                 <p id="list">목록</p>
             </figcaption>
             <thead>
                 <tr>
-                    <th class="title">제목</th> <th class="id">아이디</th>
+                    <th class="title">제목</th>
+                    <th class="id">아이디</th>
                 </tr>
-            </thead>           
-            <tr>
-                <td class="title">제목입니다</a></td> <td class="id">아이디입니다</td>
-            </tr>
+            </thead>
+            <tbody id="table-body">        
+                <tr>
+                    <td class="title"><a href="../post/post.html">제목입니다</a></td>
+                    <td class="id">아이디입니다</td>
+                </tr>
+            </tbody>
         </table>    
     </div>
 </body>
