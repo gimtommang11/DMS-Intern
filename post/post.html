@@ -10,6 +10,7 @@
     <script type="text/javascript" src="./post.js"></script>
 </head>
 <body>
+    <button onclick="checkPost()">클릭하세요</button>
         <div id = "header">
         <h1 id="headerStr">게시판</h1>
         <hr id= "headerLine">
@@ -26,16 +27,17 @@
                 <p id="content">내용입니다</p>
                 <hr class="line">
             </div>
-            <button id="postDelbtn">삭제하기</button>
-            <button id="postPatchbtn">수정하기</button>
-       
+            <div id = "btnSet">
+                <button id="postDelbtn" onclick="delPost">삭제하기</button>
+                <button id="postPatchbtn">수정하기</button>
+            </div>
 
         <div id="WcommentSet">
             <textarea id="commentWri">댓글을 입력하세요</textarea>
-            <button id="postCommentbtn">댓글쓰기</button>
+            <button id="postCommentbtn" onclick="postComment()">댓글쓰기</button>
         </div>
         <div id="commentSet">
-            <table>
+            <table id = "table">
                 <tr>
                     <th class="id">아이디</th> <th class="comment">덧글입니다</th>
                 </tr>
