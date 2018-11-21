@@ -93,7 +93,7 @@ table{
     z-index: 0;
 }
 
-table tr:not(th):hover{
+tbody > tr:hover{
     background-color: #E4E4E4;
 }
 
