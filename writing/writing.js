@@ -29,6 +29,6 @@ function writing(){
         alert("개시글이 없습니다");
     }
     else if(xhr.status === 403){
-        allert("권한이 없습니다");
+        alert("권한이 없습니다");
     }
 }
