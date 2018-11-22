@@ -7,7 +7,7 @@
     <title>post</title>
     <link rel="stylesheet" type="text/css" href="./post.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.rsawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
-    <script type="text/javascript" src="./post.js"></script>
+    
 </head>
 <body>
     <button onclick="checkPost()">클릭하세요</button>
@@ -28,21 +28,24 @@
                 <hr class="line">
             </div>
             <div id = "btnSet">
-                <button id="postDelbtn" onclick="delPost">삭제하기</button>
-                <button id="postPatchbtn">수정하기</button>
+                <button id="postDelbtn" onclick="delPost()">삭제하기</button>
+                <button id="postPatchbtn" onclick="location.href='../revise/revise.html'">수정하기</button>
             </div>
 
         <div id="WcommentSet">
-            <textarea id="commentWri">댓글을 입력하세요</textarea>
+            <textarea id="commentWri" placeholder="댓글을 입력하세요"></textarea>
             <button id="postCommentbtn" onclick="postComment()">댓글쓰기</button>
         </div>
         <div id="commentSet">
             <table id = "table">
-                <tr>
-                    <th class="id">아이디</th> <th class="comment">덧글입니다</th>
-                </tr>
+                <tbody id="tableBody">
+                    <tr>
+                       <th class="id">아이디</th> <th class="comment">덧글입니다</th>
+                    </tr>
+                </tbody>
             </table>
         </div> 
     </div>
     </div>
+    <script type="text/javascript" src="./post.js"></script>
 </body>
