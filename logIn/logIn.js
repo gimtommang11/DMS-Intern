@@ -17,8 +17,8 @@ function logIn(){
     xhr.send(JSON.stringify(parameters));
 
     if(xhr.status === 200){
-        alert("로그인이 성공하엿습니다");
         location.href="../main/main.html";
+        alert("로그인이 성공하엿습니다");
     }
     else if(xhr.status === 401){
         alert("로그인에 실패하였습니다");
