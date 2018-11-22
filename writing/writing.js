@@ -23,6 +23,7 @@ function writing(){
     
     if(xhr.status ===201){
         alert("개시글 작성 완료되었습니다");
+        location.href="../main/main.html";
     }
     else if(xhr.status === 204)
     {
