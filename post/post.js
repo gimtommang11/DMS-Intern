@@ -41,8 +41,8 @@ function checkComment(comments){        //comment조회
     for(let comment of comments){
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td>${comment.author}$<td>
-            <td>${comment.content}$<td>
+            <td>${comment.author}<td>
+            <td>${comment.content}<td>
             `
         tbody.appendChild(tr);
     }
