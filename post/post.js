@@ -1,72 +1,100 @@
-function checkPost(){
-    const postId = JSON.parse(localStorage.getItem("postId"));
 
-    let xhr = new XMLHttpRequest();
-    console.log("http://ec2.istruly.sexy:792/post/"+postId[i]);
-    
-    xhr.open("GET", "http://ec2.istruly.sexy:792/"+postId);
-    xhr.send(postId);
+ getPost();
 
-    if(xhr.response === 200){
+function getPost(){
+    console.log("get");
+    const postId = localStorage.getItem("postId");
+
+    let xhr = new XMLHttpRequest();    
+    xhr.open("GET", "http://ec2.istruly.sexy:792/post/"+postId, false);
+    xhr.send();
+
+    if(xhr.status === 200){
         alert("조회 성공");
-        const comments = JSON.parse(xhr.response).comments;
-        const author = xhr.response.author;
-        const content = xhr.response.content;
-        const title = xhr.response.title;
+        const post = JSON.parse(xhr.response);
+        console.log(post);
 
-        checkPost(title, content);
-        checkComment(comments);
+        checkPost(post.title, post.content);
+        checkComment(post.comments);
     }
-    else if(xhr.response === 204){
-        alert("개시글 없음");
+    else if(xhr.status === 204){
+        alert("게시글 없음");
     }
-    else if(xhr.response === 403){
+    else if(xhr.status === 403){
         alert("권한 없음")
     }
 }
 
-function checkPost(title, content){         //post조회   
-    let title_ = document.getElementById("title");
-    let content_ = document.getElementById("content");
+function checkPost(title, content) {         //post조회   
+    const titleEle = document.getElementById("title");
+    const contentEle = document.getElementById("content");
 
-    title_.innerHTML = title;
-    content_.innerHTML = content;
+    titleEle.innerText = title;
+    contentEle.innerText = content;
 }
 
 function checkComment(comments){        //comment조회
     let id = document.getElementsByClassName("id");
     let comment_ = document.getElementsByClassName("comment");
+    const tbody = document.getElementById("tableBody");
 
-    for(let comment of comments)
+    for(let comment of comments){
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${comment.author}$<td>
+            <td>${comment.content}$<td>
+            `
+        tbody.appendChild(tr);
+    }
 }
 
+function delPost() {
+    const postId = localStorage.getItem("postId");
+    const JWT =localStorage.getItem('JWT');
 
+    const xhr = new XMLHttpRequest();
+    xhr.open("DELETE", " http://ec2.istruly.sexy:792/post/"+postId, false);
+    xhr.setRequestHeader("Authorization","Bearer "+JWT);
+    xhr.send();
+
+    if(xhr.status === 201){
+        alert("삭제 성공");
+        location.href="../main/main.html";
+    }
+    else if(xhr.status === 204){
+        alert("개시글 없음");
+    }
+    else if(xhr.status === 403){
+        alert("권한 없음");
+    }
+}
 
 function postComment(){
-    let JWT =localStorage.getItem('JWT');
-    const id = document.getElementsByClassName("id");
-    const comment = document.getElementsByClassName("comment");
-
+    const postId = localStorage.getItem("postId");
+    const JWT =localStorage.getItem('JWT');
+    
+    const comment = document.getElementById("commentWri").value;
     let xhr = new XMLHttpRequest();
 
     const mention = {
-        id,
-        comment
-    }
-    
-    xhr.open("POST", "http://ec2.istruly.sexy:792//comment/");
+        "content": comment
+    };
+    console.log(mention.content);
+
+    xhr.open("POST","http://ec2.istruly.sexy:792/comment/"+postId, false);
    
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader('Authorization', "Bearer "+JWT);
     xhr.send(JSON.stringify(mention));
 
-    if(xhr.response === 201){
-        alert("댓글 작성 완료");
-    }
-    else if(xhr.response === 204){
+    if(xhr.status === 201){
+     alert("댓글 작성 완료");
+     }
+    else if(xhr.status === 204){
         alert("개시글 없음");
     }
-    else if(xhr.response === 403){
+    else if(xhr.status === 403){
         alert("권한 없음");
     }
 }
+
