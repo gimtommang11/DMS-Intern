@@ -15,6 +15,7 @@ body{
     height: 419px;
     z-index: 1;
     background-color:#fff;
+    overflow: scrolls;
 }
 
 #header{

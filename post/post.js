@@ -55,33 +55,24 @@ function checkComment(comments){        //comment조회
    // let id = document.getElementsByClassName("id");
     //let comment_ = document.getElementsByClassName("comment");
     const tbody = document.getElementById("tableBody");
-    const commentdelbtn = document.getElementsByClassName("commentdelbtn");
     const commentpatchbtn = document.getElementsByClassName("commentpatchbtn");
-    let index = 0;
-
    // commentpatchbtn.addEventListener('click', patchComment());
 
     for(let comment of comments){
         const tr = document.createElement("tr");
-        tr.addEventListener("click", getCommentId.bind(null, comment.commentId));   
-        commentdelbtn[index].addEventListener("click", delComment, false);
-
+        const index = comments.indexOf(comment);
         tr.innerHTML = `
-            <td>${comment.author}<td>
-            <td>${comment.content}<td>
-            <button class="commentdelbtn">${"덧글 삭제하기"}</button>
-            <button class="commentpatchbtn">${"덧글 수정하기"}</button>
+            <td>${comment.author}</td>
+            <td>${comment.content}</td>
+            <td><button class="commentdelbtn">${"덧글 삭제하기"}</button></td>
+            <td><button class="commentpatchbtn">${"덧글 수정하기"}</button></td>
             `
         tbody.appendChild(tr);
-        index++;
+        const commentdelbtn = document.getElementsByClassName("commentdelbtn");
+        commentdelbtn[index + 1].addEventListener("click", delComment.bind(null, comment.commentId));
+        console.log(index+" "+comment.commentId);
     }
 }
-
-function getCommentId(commentId){
-    localStorage.setItem("commentId", commentId);
-    console.log(commentId);
-}
-
 
 function postComment(){
     const postId = localStorage.getItem("postId");
@@ -103,6 +94,7 @@ function postComment(){
 
     if(xhr.status === 201){
      alert("댓글 작성 완료");
+     location.href = "./post.html";
      }
     else if(xhr.status === 204){
         alert("개시글 없음");
@@ -112,8 +104,8 @@ function postComment(){
     }
 }
 
-function delComment(){
-    const commentId = localStorage.getItem('commentId');
+function delComment(commentId){
+    console.log(commentId);
     const JWT = localStorage.getItem('JWT');
 
     const xhr = new XMLHttpRequest();
@@ -124,6 +116,7 @@ function delComment(){
 
     if(xhr.status === 201){
         alert('댓글 삭제 완료');
+        location.href = "./post.html";
     }
     else if(xhr.status ===204){
         alert('댓글 없음');
