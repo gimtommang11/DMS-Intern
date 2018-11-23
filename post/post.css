@@ -142,3 +142,11 @@ body{
 th{
     border: 1px solid #34495E;
 }
+
+.commentdelbtn{
+    background-color: #e74c3c;
+}
+
+.commentpatchbtn{
+    background-color: #3498db;
+}
