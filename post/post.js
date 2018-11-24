@@ -56,8 +56,7 @@ function checkComment(comments){        //comment조회
     //let comment_ = document.getElementsByClassName("comment");
     const tbody = document.getElementById("tableBody");
     const commentpatchbtn = document.getElementsByClassName("commentpatchbtn");
-   // commentpatchbtn.addEventListener('click', patchComment());
-
+  
     for(let comment of comments){
         const tr = document.createElement("tr");
         const index = comments.indexOf(comment);
@@ -70,6 +69,7 @@ function checkComment(comments){        //comment조회
         tbody.appendChild(tr);
         const commentdelbtn = document.getElementsByClassName("commentdelbtn");
         commentdelbtn[index + 1].addEventListener("click", delComment.bind(null, comment.commentId));
+        commentpatchbtn[index + 1].addEventListener('click', patchComment.bind(null, comment.commentId));
         console.log(index+" "+comment.commentId);
     }
 }
@@ -119,6 +119,34 @@ function delComment(commentId){
         location.href = "./post.html";
     }
     else if(xhr.status ===204){
+        alert('댓글 없음');
+    }
+    else if(xhr.status === 403){
+        alert('권한 없음');
+    }
+}
+
+function patchComment(commentId){
+    const JWT = localStorage.getItem('JWT');
+
+    const content = prompt('수정할 문장을 입력하세요');
+
+    const parameter = {
+        content
+    };
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('PATCH','http://ec2.istruly.sexy:792/comment/'+commentId);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Authorization','Bearer '+JWT);
+    xhr.send(JSON.stringify(parameter));
+
+    //alert(xhr.status);
+    if(xhr.status === 0){
+        alert('수정이 완료되엇습니다');
+        location.href = './post.html';
+    }
+    else if(xhr.status === 204){
         alert('댓글 없음');
     }
     else if(xhr.status === 403){
